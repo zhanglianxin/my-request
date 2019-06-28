@@ -110,7 +110,7 @@ func (c *MyClient) Request(urlStr, method, cookieStr string, body io.Reader,
 	case http.StatusFound:
 		if loc := resp.Header.Get("Location"); "" != loc &&
 			strings.Contains(loc, "login") {
-			return nil, errors.New("Cookie maybe is invalid")
+			return resp, errors.New("Cookie maybe is invalid")
 		}
 	default:
 		logrus.Infof("StatusCode: %d, url: %s", resp.StatusCode, urlStr)
