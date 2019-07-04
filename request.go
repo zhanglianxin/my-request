@@ -78,6 +78,7 @@ func (c *MyClient) Request(urlStr, method, cookieStr string, body io.Reader,
 		for key := range params {
 			q.Add(key, params[key])
 		}
+		req.URL.RawQuery = q.Encode()
 	}
 
 	if "" != cookieStr {
